@@ -1,6 +1,7 @@
 import { Plugin } from "vite";
 import * as fsWalk from "@nodelib/fs.walk";
 import util from "util";
+import path from "path/posix";
 
 export default (): Plugin => {
   return {
@@ -39,6 +40,22 @@ export default (): Plugin => {
         )}.map(page => ({...page, component: React.lazy(() => import("./" + page.file))}))})
         `;
       }
+    },
+    async configureServer({ watcher, moduleGraph, ws }) {
+      const fullReload = () => {
+        const module = moduleGraph.getModuleById("inn:routes");
+        module && moduleGraph.invalidateModule(module);
+      };
+
+      watcher.add("./pages/*");
+      watcher.on(
+        "add",
+        (file) => file.startsWith(path.resolve("./pages")) && fullReload()
+      );
+      watcher.on(
+        "unlink",
+        (file) => file.startsWith(path.resolve("./pages")) && fullReload()
+      );
     },
   };
 };

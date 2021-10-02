@@ -9,6 +9,7 @@
   "private": false,
   "peerDependencies": {
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
     "vite": "^2.6.2"
   },
@@ -17,6 +18,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.3.0",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
     "typescript": "^4.4.3",
     "vite": "^2.6.2"
@@ -32,6 +34,10 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./router": "./dist/Router.js"
+    "./router": "./dist/Router.js",
+    "./head": {
+      "types": "./dist/Head.d.ts",
+      "default": "./dist/Head.js"
+    }
   }
 }
