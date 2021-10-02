@@ -1,22 +1,26 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-interface Page {
-  path: string;
-  file: string;
-}
-
-const Router = ({ pages }: { pages: Page[] }) => {
+const Router: React.FC<{
+  pages: {
+    path: string;
+    file: string;
+    component: React.LazyExoticComponent<React.ComponentType<any>>;
+  }[];
+}> = ({ pages }) => {
   return (
     <React.Suspense fallback={<></>}>
       <BrowserRouter>
-        {pages.map((route) => (
-          <Route
-            path={route.path}
-            component={React.lazy(() => import("./" + route.file))}
-            key={route.path}
-          />
-        ))}
+        <Switch>
+          {pages.map((route) => (
+            <Route
+              path={route.path}
+              component={route.component}
+              key={route.path}
+              exact
+            />
+          ))}
+        </Switch>
       </BrowserRouter>
     </React.Suspense>
   );

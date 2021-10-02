@@ -32,11 +32,11 @@ export default (): Plugin => {
 
         return `
         import React from 'react'
-        import { Router } from '@innatical/inn.ts/dist/Router';
+        import Router from '@innatical/inn.ts/router';
         
         export default () => React.createElement(Router, { pages: ${JSON.stringify(
           pages
-        )}})
+        )}.map(page => ({...page, component: React.lazy(() => import("./" + page.file))}))})
         `;
       }
     },

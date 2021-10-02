@@ -1,8 +1,7 @@
 {
   "name": "@innatical/inn.ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React Router-based framework for creating React apps.",
-  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/innatical/inn.ts",
   "author": "Innatical",
@@ -30,5 +29,9 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./router": "./dist/Router.js"
+  }
 }
