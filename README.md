@@ -1,4 +1,4 @@
-# Inn.ts Template
+# Inn.ts Framework 
 
 React Router-based framework for creating React apps.
 
