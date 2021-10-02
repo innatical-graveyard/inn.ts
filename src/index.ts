@@ -34,16 +34,24 @@ export default (): Plugin => {
         return `
         import React from 'react'
         import Router from '@innatical/inn.ts/router';
+
+        const pages = [${pages.map(
+          (page) =>
+            `{path: ${JSON.stringify(page.path)}, file: ${JSON.stringify(
+              page.file
+            )}, component: React.lazy(() => import(${JSON.stringify(
+              "./" + page.file
+            )}))}`
+        )}]
         
-        export default () => React.createElement(Router, { pages: ${JSON.stringify(
-          pages
-        )}.map(page => ({...page, component: React.lazy(() => import("./" + page.file))}))})
+        export default () => React.createElement(Router, { pages })
         `;
       }
     },
     async configureServer({ watcher, moduleGraph, ws }) {
       const fullReload = () => {
         const module = moduleGraph.getModuleById("inn:routes");
+        moduleGraph.getModuleById("inn:routes")?.importedModules;
         module && moduleGraph.invalidateModule(module);
       };
 
