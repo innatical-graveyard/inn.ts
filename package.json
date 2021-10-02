@@ -1,6 +1,6 @@
 {
   "name": "@innatical/inn.ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Router-based framework for creating React apps.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
