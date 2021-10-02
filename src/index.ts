@@ -32,7 +32,7 @@ export default (): Plugin => {
 
         return `
         import React from 'react'
-        import Router from './Router';
+        import { Router } from '@innatical/inn.ts';
         
 
         export default () => React.createElement(Router, { pages: ${JSON.stringify(
@@ -43,3 +43,5 @@ export default (): Plugin => {
     },
   };
 };
+
+export * from "./Router";
