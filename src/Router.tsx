@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 const Router: React.FC<{
   pages: {
@@ -10,18 +10,16 @@ const Router: React.FC<{
 }> = ({ pages }) => {
   return (
     <React.Suspense fallback={<></>}>
-      <BrowserRouter>
-        <Switch>
-          {pages.map((route) => (
-            <Route
-              path={route.path}
-              component={route.component}
-              key={route.path}
-              exact
-            />
-          ))}
-        </Switch>
-      </BrowserRouter>
+      <Switch>
+        {pages.map((route) => (
+          <Route
+            path={route.path}
+            component={route.component}
+            key={route.path}
+            exact
+          />
+        ))}
+      </Switch>
     </React.Suspense>
   );
 };
