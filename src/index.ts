@@ -17,7 +17,9 @@ export default (): Plugin => {
         const pages = paths
           .filter(
             ({ path }) =>
-              (path.slice(-4) === ".tsx" || path.slice(-4) === ".jsx") &&
+              (path.slice(-4) === ".tsx" ||
+                path.slice(-4) === ".jsx" ||
+                path.slice(-4) === ".mdx") &&
               path !== "/pages/_app.tsx"
           )
           .map(({ path }) => ({
