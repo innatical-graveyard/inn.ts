@@ -1,7 +1,7 @@
 import { Plugin } from "vite";
 import * as fsWalk from "@nodelib/fs.walk";
 import util from "util";
-import path from "path/posix";
+import path from "path";
 
 export default (): Plugin => {
   return {
